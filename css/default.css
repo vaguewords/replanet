@@ -1,4 +1,4 @@
-/*root, font, html, body, default*/
+/*꼭 들어가야되는거 : body 기본 + root, font, color, input, grid 등등 */
 
 :root {
   --color-black: #000;
@@ -348,7 +348,9 @@ h6 {
 .p-1 {
   padding: 0.625rem !important
 }
-
+.p-2 {
+  padding: 1rem !important
+}
 .m-0 {
   margin: 0 !important
 }
@@ -444,8 +446,12 @@ h6 {
   width: 100% !important
 }
 
-.h-100 {
+.vh-100 {
   height: 100vh !important
+}
+
+.h-100 {
+  height: 100% !important
 }
 
 .border-0 {
@@ -565,6 +571,12 @@ h6 {
   overflow: hidden;
 }
 
+.topnav a.user {
+
+  margin: 0 0 0 1.5rem;
+
+}
+
 /* Change the color of links on hover */
 .topnav .menu a:hover {
   color: var(--color-dark-hover);
@@ -580,7 +592,7 @@ h6 {
   background: var(--color-primary);
   bottom: 0;
   left: 0;
-  transform: translateX(-100%);
+  transform: translateX(-101%);
   transition: all .3s ease;
 }
 
@@ -606,7 +618,7 @@ h6 {
 .topnav .icon {
   display: none;
   margin-right: 0 !important;
-  padding-right: 0 !important
+  padding-right: 0 !important;
 }
 
 /* When the screen is less than 992 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -997,26 +1009,25 @@ table {
   width: 100%;
   border: solid 1px var(--color-secondary);
   border-left: 0;
-  border-right: 0
+  border-right: 0;
 }
 
 thead {
   border-bottom: solid 2px var(--color-primary);
+  text-align: left;
 }
 
 /* Style table headers and table data */
 th,
 td {
-  text-align: center;
   padding: 1rem;
   border: solid 1px var(--color-secondary);
   border-left: 0;
   border-right: 0;
 }
 
-th:first-child,
-td:first-child {
-  text-align: left;
+th {
+  font-weight: 700;
 }
 
 /* Zebra-striped table rows */
@@ -1037,26 +1048,154 @@ tr:nth-child(even):hover {
   color: red;
 }
 
+
+/*checkbox & radio*/
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type='checkbox'], input[type='radio'] {
+    --active: var(--color-primary);
+    --active-inner: #fff;
+    --focus: 2px rgba(39, 94, 254, .3);
+    --border: #bbc1e1;
+    --border-hover: var(--color-primary);
+    --background: #fff;
+    --disabled: #f6f8ff;
+    --disabled-inner: #e1e6f9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 21px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--bc, var(--border));
+    background: var(--b, var(--background));
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+ }
+  input[type='checkbox']:after, input[type='radio']:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    position: absolute;
+    transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+ }
+  input[type='checkbox']:checked, input[type='radio']:checked {
+    --b: var(--active);
+    --bc: var(--active);
+    --d-o: 0.3s;
+    --d-t: 0.6s;
+    --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+ }
+  input[type='checkbox']:disabled, input[type='radio']:disabled {
+    --b: var(--disabled);
+    cursor: not-allowed;
+    opacity: 0.9;
+ }
+  input[type='checkbox']:disabled:checked, input[type='radio']:disabled:checked {
+    --b: var(--disabled-inner);
+    --bc: var(--border);
+ }
+  input[type='checkbox']:disabled + label, input[type='radio']:disabled + label {
+    cursor: not-allowed;
+ }
+  input[type='checkbox']:hover:not(:checked):not(:disabled), input[type='radio']:hover:not(:checked):not(:disabled) {
+    --bc: var(--border-hover);
+ }
+  input[type='checkbox']:focus, input[type='radio']:focus {
+    box-shadow: 0 0 0 var(--focus);
+ }
+  input[type='checkbox']:not(.switch), input[type='radio']:not(.switch) {
+    width: 21px;
+ }
+  input[type='checkbox']:not(.switch):after, input[type='radio']:not(.switch):after {
+    opacity: var(--o, 0);
+ }
+  input[type='checkbox']:not(.switch):checked, input[type='radio']:not(.switch):checked {
+    --o: 1;
+ }
+  input[type='checkbox'] + label, input[type='radio'] + label {
+    font-size: 14px;
+    line-height: 21px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4px;
+ }
+  input[type='checkbox']:not(.switch) {
+    border-radius: 7px;
+ }
+  input[type='checkbox']:not(.switch):after {
+    width: 5px;
+    height: 9px;
+    border: 2px solid var(--active-inner);
+    border-top: 0;
+    border-left: 0;
+    left: 7px;
+    top: 4px;
+    transform: rotate(var(--r, 20deg));
+ }
+  input[type='checkbox']:not(.switch):checked {
+    --r: 43deg;
+ }
+  input[type='checkbox'].switch {
+    width: 38px;
+    border-radius: 11px;
+ }
+  input[type='checkbox'].switch:after {
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background: var(--ab, var(--border));
+    transform: translateX(var(--x, 0));
+ }
+  input[type='checkbox'].switch:checked {
+    --ab: var(--active-inner);
+    --x: 17px;
+ }
+  input[type='checkbox'].switch:disabled:not(:checked):after {
+    opacity: 0.6;
+ }
+  input[type='radio'] {
+    border-radius: 50%;
+ }
+  input[type='radio']:after {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: var(--active-inner);
+    opacity: 0;
+    transform: scale(var(--s, 0.7));
+ }
+  input[type='radio']:checked {
+    --s: 0.5;
+ }}
+
+
 /*tabs*/
 /* 탭 선택자 */
 .tab_item {
-  height: 80px;
-  line-height: 80px;
-  font-size: 1.25rem;
+  height: 80px!important;
+  line-height: 80px!important;
+  font-size: 1.25rem!important;
   text-align: center;
   color: var(--color-dark);
   display: block;
   float: left;
   text-align: center;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease!important;
   color: var(--color-secondary);
   border-bottom: 1px solid var(--color-secondary);
   cursor: pointer;
+  margin: 0!important
 }
 
 /* 탭 라디오 버튼 숨기기 */
 input[name="tab_item"] {
-  display: none;
+  display: none!important;
 }
 
 /* 선택자 - hover */
@@ -1265,8 +1404,7 @@ progress {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: solid 1px var(--color-light-hover);
-  border-top: 0;
+  border-bottom: solid 1px var(--color-light-hover);
   padding: 2rem 0;
   background-color: var(--color-white);
 
@@ -1281,6 +1419,7 @@ progress {
 .admin-sidebar {
   height: 100vh;
   width: 200px;
+  border-right: solid 1px var(--color-light-hover);
 }
 
 .admin-sidebar-menu {
@@ -1289,71 +1428,74 @@ progress {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: solid 1px var(--color-light-hover);
-  border-top: 0;
+  border-bottom: solid 1px var(--color-light-hover);
   background-color: var(--color-white);
+  cursor: pointer;
+}
 
+
+.admin-sidebar-menu.active,
+.admin-sidebar-menu:active,
+.admin-sidebar-menu:focus,
+.admin-sidebar-menu:hover {
+  background-color: var(--color-primary)!important;
+  color: var(--color-white)!important;
 }
 
 .admin-main {
-  padding: 1rem
+  padding: 2rem
 }
 
-/*checkbox*/
-.chk_box {
-  display: block;
-  position: relative;
-  padding-left: 28px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.admin-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
-/* 기본 체크박스 숨기기 */
-.chk_box input[type="checkbox"] {
-  display: none;
+.admin-title > * {
+  display: inline
 }
 
-/* 선택되지 않은 체크박스 스타일 꾸미기 */
-.on {
-  width: 20px;
-  height: 20px;
-  background:var(--color-white);
-  border: solid 1px var(--color-secondary);
-  border-radius: 0.25rem;
-  position: absolute;
-  top: 2px;
-  left: 0;
+/*pagination*/
+.pagination {
+  margin: 2rem 0 2rem 0;
+  gap: .25rem
 }
-
-/* 선택된 체크박스 스타일 꾸미기 */
-.chk_box input[type="checkbox"]:checked+.on {
+.pagination,
+.pagination li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pagination li {
+  background: var(--color-white);
+  list-style: none;
+}
+.pagination li a {
+  text-decoration: none;
+  color: var(color--primary);
+  height: 40px;
+  width: 40px;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .25rem;
+  border: 1px solid var(--color-secondary);
+}
+.pagination li:last-child a {
+  border-right-width: 1px;
+}
+.pagination li a.active,
+.pagination li a:hover,
+.pagination li a:focus,
+.pagination li a:active {
   background: var(--color-primary);
-  border: solid 1px var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-white)
 }
 
-.on:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.chk_box input[type="checkbox"]:checked+.on:after {
-  display: block;
-}
-
-.on:after {
-  width: 6px;
-  height: 10px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  position: absolute;
-  left: 5px;
-  top: 1px;
-  border-radius: 1px;
+.masthead {
 }
