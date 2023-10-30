@@ -110,6 +110,9 @@ body {
   font-family: 'Pretendard Variable', sans-serif;
 }
 
+pre {
+  white-space: pre-line!important
+}
 
 /*a, input, li*/
 a,
@@ -691,10 +694,12 @@ h6 {
   padding: 1.5rem 5vw;
 }
 
-.container.container-centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.container-centered {
+  display: flex!important;
+  flex-direction: column;
+  align-items: center!important;
+  justify-content: center!important;
+  text-align: center;
 }
 
 .items-container {
@@ -777,15 +782,18 @@ h6 {
 }
 
 .g-gap1 {
-  grid-gap: 0.625rem !important;
+  grid-gap: 0.625rem!important;
+  gap: 0.625rem!important;
 }
 
 .g-gap2 {
-  grid-gap: 1rem !important;
+  grid-gap: 1rem!important;
+  gap: 1rem!important;
 }
 
 .g-gap3 {
-  grid-gap: 2rem !important;
+  grid-gap: 2rem!important;
+  gap: 2rem!important;
 }
 
 .item {
@@ -801,6 +809,11 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.item > .input,
+.item > .input-group,
+.item > .textarea  {
+  margin-bottom: 0.625rem!important;
 }
 
 img {
@@ -818,9 +831,15 @@ select {
   border-radius: .25rem !important;
 }
 
+.textarea {
+  border-radius: .25rem!important;
+  width: 100%;
+  padding: 7px;
+  border: solid 1px var(--color-secondary)!important;
+}
+
 .input {
   border: solid 1px var(--color-secondary);
-  border-radius: 0;
   padding: 0 7px;
   width: 100%
 }
